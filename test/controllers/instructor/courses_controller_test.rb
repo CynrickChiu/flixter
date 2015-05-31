@@ -1,14 +1,14 @@
 require 'test_helper'
 
 class Instructor::CoursesControllerTest < ActionController::TestCase
-  test "new" do
+  test "should get new" do
 	  user = FactoryGirl.create(:user)
 	  sign_in user
 	  get :new
 	  assert_response :success
   end
 
-  test "create success" do
+  test "create successful" do
     user = FactoryGirl.create(:user)
     sign_in user
     post :create, {:course => {
@@ -20,7 +20,7 @@ class Instructor::CoursesControllerTest < ActionController::TestCase
     assert_redirected_to instructor_course_path(Course.last)
   end
 
-  test "create invalid" do
+  test "create unsuccessful because of invalid data" do
   	user = FactoryGirl.create(:user)
   	sign_in user
     post :create, {:course => {
