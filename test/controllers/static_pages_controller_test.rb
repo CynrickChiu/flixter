@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionController::TestCase
-  test "index" do
+  test "should get index" do
     get :index
     assert_response :success
   end
