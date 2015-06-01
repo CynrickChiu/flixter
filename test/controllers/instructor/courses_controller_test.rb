@@ -46,4 +46,12 @@ class Instructor::CoursesControllerTest < ActionController::TestCase
       get :show, :id => 'abc'
     end
   end
+
+  test "show not found when current logged in user is not course creator" do
+    user = FactoryGirl.create(:user)
+    course = FactoryGirl.create(:course)
+    sign_in user
+    get :show, :id => course.id
+    assert_response :unauthorized
+  end
 end
