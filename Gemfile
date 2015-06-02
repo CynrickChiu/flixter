@@ -23,6 +23,8 @@ gem 'figaro'
 
 gem 'fog', '~> 1.3.1'
 
+gem 'mini_magick'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
