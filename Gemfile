@@ -17,6 +17,8 @@ gem 'devise', '>= 3.2.4'
 
 gem 'factory_girl_rails', '~> 4.0'
 
+gem 'carrierwave'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
