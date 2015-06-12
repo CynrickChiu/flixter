@@ -11,22 +11,21 @@ class EnrollmentsControllerTest < ActionController::TestCase
   end
 
   test "enroll successfully in a premium course" do
-    # class FakeCustomer
-    #   attr_accessor :id
-    #   def initialize(id)
-    #     self.id = id
-    #   end
-    # end
+    class FakeCustomer
+      attr_accessor :id
+      def initialize(id)
+        self.id = id
+      end
+    end
 
-    # customer = FakeCustomer.new(1)
+    customer = FakeCustomer.new(1)
+    Stripe::Customer.expects(:create).returns(customer)
+    Stripe::Charge.expects(:create).returns({})
 
     user = FactoryGirl.create(:user)
     course = FactoryGirl.create(:course)
-
-    Stripe::Customer.expects(:create).returns(user)
-    Stripe::Charge.expects(:create).returns({})
-
     sign_in user
+    
     post :create, :course_id => course.id, :enrollment => {:user_id => user.id}
     assert_redirected_to course_path(course)
   end
