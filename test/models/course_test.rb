@@ -26,4 +26,24 @@ class CourseTest < ActiveSupport::TestCase
     course = Course.new(:title => 'Some title', :description => 'Some description', :cost => -1)
     assert_not course.save
   end
+
+  test "free? method on a free course should return true" do
+    course = FactoryGirl.create(:course, :cost => 0)
+    assert_equal true, course.free?
+  end
+
+  test "free? method on a premium course should return false" do
+    course = FactoryGirl.create(:course)
+    assert_equal false, course.free?
+  end
+
+  test "premium? method on a free course should return false" do
+    course = FactoryGirl.create(:course, :cost => 0)
+    assert_equal false, course.premium?
+  end
+
+  test "premium? method on a premium course should return true" do
+    course = FactoryGirl.create(:course)
+    assert_equal true, course.premium?
+  end
 end
