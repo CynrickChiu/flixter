@@ -48,11 +48,11 @@
   </nav>
 
   <% if notice.present? %>
-    <p class="alert alert-info"><%= notice %></p>
+    <p class="alert alert-info text-center"><%= notice %></p>
   <% end %>
 
   <% if alert.present? %>
-    <p class="alert alert-danger"><%= alert %></p>
+    <p class="alert alert-danger text-center"><%= alert %></p>
   <% end %>
 
   <%= yield %>
@@ -72,11 +72,11 @@
     <div class="col-xs-12 col-sm-3">
       <b>About</b>
       <br />
-      <%= link_to 'Team', '#' %>
+      <%= link_to 'Team', team_path %>
       <br />
-      <%= link_to 'Careers', '#' %>
+      <%= link_to 'Careers', careers_path %>
       <br />
-      <%= link_to 'Privacy Policy', '#' %>
+      <%= link_to 'Privacy Policy', privacy_path %>
     </div>
     <div class="col-xs-12 col-sm-3">
       <b>Contact</b>
